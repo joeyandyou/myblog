@@ -1,0 +1,29 @@
+.selectfilter {
+    display: none;
+}
+.selector {
+    width: 100%;
+}
+.selector-available, .selector-chosen {
+    width: 45%;
+}
+.selector .selector-available input {
+    width: 80%;
+}
+.selector select {
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 13px;
+}
+.selector h2 {
+    margin: 0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 13px;
+}
+.selector-filter input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 6px;
+    margin-top: 0;
+}

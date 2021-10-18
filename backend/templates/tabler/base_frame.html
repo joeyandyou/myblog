@@ -1,0 +1,48 @@
+{% extends 'tabler/base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/tabler/css/manage.css">
+{% endblock %}
+
+{% block js %}
+<script src="/static/tabler/js/manage.js"></script>
+{% endblock %}
+
+{% block page %}
+    <div class="page-main">
+        <div class="header py-4">
+            <div class="container">
+                <div class="d-flex">
+                    {% block page_title %}<a class="header-brand" href="./index.html"></a>{% endblock %}
+                    <div class="d-flex order-lg-2 ml-auto">
+                        <div class="dropdown">
+                            <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                            {% block profile_avatar %}
+                                <span class="avatar" style="background-image: url(/static/tabler/images/avatar-default.png)"></span>
+                                <span class="ml-2 d-none d-lg-block">
+                                    <span class="text-default">{{ request.user.username }}</span>
+                                </span>
+                            {% endblock %}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                {% block profile_dropdown %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                        <span class="header-toggler-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse" style="margin-bottom: 2em">
+            <div class="container">
+                <div class="row align-items-center">
+                    {% block nav %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        {% block main %}{% endblock %}
+    </div>
+    {% block footer %}{% endblock %}
+{% endblock %}

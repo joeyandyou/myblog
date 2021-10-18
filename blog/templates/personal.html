@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="jumbotron">
+        <form class="form-signin" action="" method="post">
+            {% csrf_token %}
+            <p style="font-size: 15px;">
+               你好！用户&nbsp;&nbsp;<a>{{ p.username }}</a>&nbsp;&nbsp;您于&nbsp;&nbsp;{{ p.create_time | date:"Y-m-d H:m"}}注册的账号<br><br>
+            </p>
+            <p style="font-size: 15px;">
+               用户名：<input type="text" name="username" value="{{ p.username }}" style="height: 20px;width: 200px;" placeholder=请输入新用户名 ><br><br>
+            </p>
+            <p style="font-size: 15px;">
+               邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:
+               <input type="text" name="email"  value="{{ p.email }}" style=" height: 20px;width: 200px;" placeholder=请输入新邮箱地址 ><br><br>
+            </p>
+            <p style="font-size: 15px;">
+                性&nbsp;别:
+                <input type="radio" checked="checked" name="sex" value="male"  />男&nbsp;&nbsp;<input id="woman" type="radio" name="sex" value="female"/>女<br><br>
+            </p>
+
+            <p style="font-size: 15px;">
+                爱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好:
+                <input type="text" name="hobby"  value="{{ p.hobby }}" style=" height: 100px;width: 400px;" placeholder=请输入要修改的信息 ><br><br>
+            </p>
+
+            <div style="text-align: center;">
+                <button  style="height: 60px;width: 100px; background-color: #66afe9"  type="submit">修改</button>
+            </div>
+            <br>
+            <br>
+
+  {# <a  href="/del_pub/?id={{ p.id }}" class="btn btn-danger" onclick="return confirm('是否要修改密码？')">修改密码</a> #}
+
+        </form>
+  </div>
+
+{% endblock %}

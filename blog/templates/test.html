@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <script src='/static/tiny_mce/tiny_mce.js'></script>
+	<script>
+		tinyMCE.init({
+			'mode':'textareas', 'theme':'advanced',
+			'width':800,'height':600,
+		})
+	</script>
+</head>
+<body>
+<form method='post' action='url'>
+		<textarea></textarea>
+	</form>
+    
+{% endblock %}

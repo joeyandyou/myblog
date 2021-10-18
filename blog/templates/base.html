@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+  <!doctype html>
+<html lang="zh-CN">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/navbar/">
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/examples/navbar/navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index/">MyBolg</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li {% if current == 'index' %}class="active"{% endif %}><a href="/index/">首页</a></li>
+              <li {% if current == 'article_list' %}class="active"{% endif %}><a href="/article_list/">文章中心 </a></li>
+              <li {% if current == 'person' %}class="active"{% endif %}><a href="/person/">个人中心</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><button style="position: relative; right: -2%; top:5px; width: 100px;height: 40px;" class="btn btn-primary"  type="button" href="/comment_center/" onclick="window.location.href='/comment_center/'">
+                    评论中心 <span class="badge" >{{ count }}</span>
+                </button></li>
+              <li><a href="/logout/">退出登录</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="content">
+          {% block content %}base{% endblock %}
+      </div>
+
+
+
+        <p style="font-size: 18px; color: #2aabd2;text-align: center">京ICP证030173号-1 京网文【2013】0934-983号&copy;</p>
+    </div> <!-- /container -->
+
+    <div class="message" style="opacity:0"></div>
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+
+<script>
+    L2Dwidget.init({
+        "model": {
+            jsonPath: "https://unpkg.com/live2d-widget-model-koharu/assets/koharu.model.json",
+            "scale": 1
+        },
+        "display": {
+            "position": "left",
+            "width": 100,
+            "height": 200,
+            "hOffset": 0,
+            "vOffset": -20
+        },
+        "mobile": {
+            "show": true,
+            "scale": 0.5
+        },
+        "react": {
+            "opacityDefault": 0.7,
+            "opacityOnHover": 0.2
+        }
+    });
+</script>
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+<script src="https://files.cnblogs.com/files/blogs/682374/jquery-1.11.1.js"></script>
+<script>
+
+    function loadModel(jsonPath, height) {
+        L2Dwidget.init({
+            "model": {
+                jsonPath: jsonPath,
+                "scale": 1
+            },
+            "display": {
+                "position": "right",
+                "width": 100,
+                "height": height ? height : 200,
+                "hOffset": 50,
+                "vOffset": -20
+            },
+            "mobile": {
+                "show": true,
+                "scale": 1
+            },
+            "react": {
+                "opacityDefault": 0.7,
+                "opacityOnHover": 0.2
+            }
+        });
+        setTimeout("loadElement()", 1000);
+    }
+    var model = [
+        {
+            path: "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",
+        },
+        {
+            path: "https://unpkg.com/live2d-widget-model-z16@1.0.5/assets/z16.model.json",
+        },
+        {
+            path: "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
+            height: 210
+        },
+        {
+            path: "https://unpkg.com/live2d-widget-model-hibiki@1.0.5/assets/hibiki.model.json",
+            height: 300
+        },
+        {
+            path: "https://unpkg.com/live2d-widget-model-nico@1.0.5/assets/nico.model.json",
+            height: 120
+        }
+    ];
+    var preModel = 0;
+    loadModel(model[0].path, model[0].height);
+</script>
+<style>
+    #message{
+        position: fixed;
+        background:#5B7CA3;
+        color:#fff;
+        line-height:30px;
+        padding: 6px 20px;
+        border-radius: 20px;
+        display: none;
+        width: 200px;
+        text-align: center;
+    }
+    #triangle-down {
+        position: fixed;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid #5B7CA3;
+        display: none;
+    }
+    .func {
+        position: fixed;
+        background: pink;
+        padding: 5px;
+        font-size: 12px;
+        color: darkviolet;
+        font-weight: bold;
+    }
+    .func:hover {
+        color: white;
+        cursor: pointer;
+    }
+</style>
+<script>
+    function loadElement() {
+        $('#message,#triangle-down,.func').remove();
+        let canvas = $('canvas');
+        let live2d = $('#live2d-widget');
+        let width = canvas.width() / 5;
+        let height = canvas.height();
+        live2d.attr('style', 'position:fixed;width:140px;height:'+ (height / 1.6 + (height/400 - 1) *150) +'px;right:80px;bottom:60px');
+        live2d.parent().append('<div id="message" style="right: '+ width +'px; bottom: '+ (height - height / 8) +'px;"></div>');
+        live2d.parent().append('<div id="triangle-down" style="right: '+ (width + 100) +'px; bottom: '+ (height - 19 - height/8) +'px;"></div>');
+        live2d.parent().append('<div id="change" class="func" style="right: '+ (width) +'px; bottom: '+ (height / 2) +'px;">换</div>');
+        live2d.parent().append('<div id="sing" class="func" style="right: '+ (width) +'px; bottom: '+ (height / 2 - 40) +'px;">唱</div>');
+        live2d.parent().append('<input type="text" id="hidden" hidden="hidden"/>');
+        live2d.on('click', function () {
+            switch (clickCount) {
+                case 1: showMessage('嗨~ 是想要陪我玩吗', 2000);break;
+                case 2: showMessage('华风夏韵，洛水天依', 2000);break;
+                case 3: showMessage('你也喜欢洛天依吗', 2000);break;
+                case 4: showMessage('不要动手动脚的！快把手拿开~~', 2000);break;
+                case 5: showMessage('真的是不...不知羞耻！', 2000);break;
+                case 6: showMessage('Hentai！', 2000);break;
+                case 7: showMessage('再摸的话我可要报警了！⌇●﹏●⌇！', 2000);break;
+                default: showMessage('110吗，这里有个变态一直在摸我(ó﹏ò｡)！', 2000);break;
+            }
+        });
+        live2d.on({
+            mouseenter: function (e) {
+                showMessage('嗨~ 快来陪我玩吧！', 3000);
+            }
+        });
+        $('#change').on('click', function () {
+            showMessage('隐藏着星星力量的钥匙啊，请你在我面前显示你真正的力量，与你定下约定的小樱命令你，封印解除！', 2000);
+            setTimeout(function () {
+                let i = Math.floor(Math.random() * 4);
+                loadModel(model[i].path, model[i].height);
+                if (preModel === i) {
+                    showMessage('啊咧咧，变装失败了，快来再试一次(气鼓鼓)！', 3000, 1000);
+                } else {
+                    showMessage('变装成功！好耶！', 3000, 1000);
+                }
+                preModel = i;
+            }, 2100);
+        });
+        $('#sing').on('click', function () {
+            showMessage('想要听我唱歌吗？', 2000);
+        });
+    }
+    setTimeout(function() {
+        (function (){
+            let text;
+            if(document.referrer !== '') {
+                let referrer = document.createElement('a');
+                referrer.href = document.referrer;
+                let domain = referrer.hostname.split('.')[1];
+                if (domain === 'baidu') {
+                    text = '嗨！ 来自 百度搜索 的朋友！<br>欢迎访问<span style="color:yellow;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+                }else if (domain === 'so') {
+                    text = '嗨！ 来自 360搜索 的朋友！<br>欢迎访问<span style="color:yellow;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+                }else if (domain === 'google') {
+                    text = '嗨！ 来自 谷歌搜索 的朋友！<br>欢迎访问<span style="color:yellow;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+                }
+            }
+            let delay = 500;
+            if (text) {
+                delay += 3000;
+                showMessage(text, 3000)
+            }
+            if (window.location.href === `https://www.cnblogs.com/jorry-yun/`) { //主页URL判断，需要斜杠结尾
+                let now = (new Date()).getHours();
+                if (now > 23 || now <= 5) {
+                    text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？';
+                } else if (now > 5 && now <= 9) {
+                    text = '早上好！一日之计在于晨，美好的一天就要开始了！';
+                } else if (now > 9 && now <= 11) {
+                    text = '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！';
+                } else if (now > 11 && now <= 14) {
+                    text = '中午了，工作了一个上午，现在是午餐时间！';
+                } else if (now > 14 && now <= 17) {
+                    text = '午后很容易犯困呢，今天的运动目标完成了吗？';
+                } else if (now > 17 && now <= 19) {
+                    text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~~';
+                } else if (now > 19 && now <= 21) {
+                    text = '晚上好，今天过得怎么样？';
+                } else if (now > 21 && now <= 23) {
+                    text = '已经这么晚了呀，早点休息吧，晚安~~';
+                }
+            }else {
+                text = '欢迎阅读<span style="color: yellow">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+            }
+            showMessage(text, 3000, delay);
+        })();
+    }, 1000);
+
+    let clickCount = 0;
+    let timeout;
+    function showMessage(s, expire, delay) {
+        if (!delay || delay < 0) {
+            delay = 0;
+        }
+        setTimeout(function () {
+            let text = s;
+            $('#message').show();
+            $('#triangle-down').show();
+            $('#message').html(text);
+            clickCount++;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                $('#message').hide();
+                $('#triangle-down').hide();
+                clickCount = 1;
+            }, expire);
+        }, delay);
+    }
+    $(document).on('copy', function(event){
+      if (!window.getSelection) {
+        return
+      }
+      var copyData = window.getSelection().toString();
+      if ($('#hidden').val()) {
+        $('#hidden').val('');
+        return;
+      }
+      $('#hidden').val(copyData + "zzz");
+      $('#hidden').select();
+      document.execCommand('copy');
+      let s = copyData.substring(0, Math.min(5, copyData.length));
+      s = s.length === copyData.length ? s : s + "...";
+      showMessage("你复制的内容是<span style='color: yellow'>「" + s + "」</span>，转载要记得加上出处哦~~", 4000)
+    });
+
+</script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.min.js'%}" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.9/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

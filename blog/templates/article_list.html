@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="jumbotron">
+
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+
+    <div class="list-group">
+        <p  class="list-group-item active">
+        我的文章列表<a style="position:relative;left:718px; top:2px;font-size: 19px;" href="/add_article/" class="btn btn-success">发布新博客内容</a>
+        </p>
+
+    </div>
+    <table class="table-hover table-bordered table-striped table">
+        <thead>
+        <tr>
+            <th>访问量</th>
+            <th>作者</th>
+            <th>标题</th>
+            <th>概述</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for article in contacts %}
+            <tr>
+                <td>{{ article.visitor }}</td>
+                <td>{{ article.author }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content | safe | slice:":10" }}</td>
+                <td class="text-center">
+                    <a href="/edit_article/?article_id={{ article.id }}" class="btn btn-primary">详情</a>
+                    <a href="/del_article/?article_id={{ article.id }}" class="btn btn-danger" onclick="return confirm('是否确认删除')">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <div class="pagination">
+            <span class="step-links">
+
+            </span>
+        </div>
+
+        </tbody>
+    </table>
+
+    </div>
+    <nav aria-label="Page navigation" style="text-align: center">
+        <ul class="pagination">
+            <li>
+                {% if contacts.has_previous %}
+                <a href="?page={{ contacts.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+            </li>
+            <li>
+
+            </li>
+               {% for i in page_nums %}
+                   <li {% if contacts.number == i %}class="active"{% endif %}><a href="?page={{ i }}">{{ i }}</a></li>
+               {% endfor %}
+            <li>
+                {% if contacts.has_next %}
+                <a href="?page={{ contacts.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                {% endif %}
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </div>
+{% endblock %}

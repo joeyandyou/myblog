@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="jumbotron">
+    <form method="post">
+    {% csrf_token %}
+        分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类:
+        {% for i in category %}
+            <input type="radio"  name="category" value="{{ i.name }}"  />{{ i.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {% endfor %}
+        <button type="submit">提交</button>
+    </form>
+<br>
+<br>
+    <div class="row" >
+        <div class="col-lg-6">
+            <form method="post">
+            <div class="input-group">
+                {% csrf_token %}
+                <input type="text" class="form-control" placeholder="Search for..." style="width: 600px;" name="key">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go!</button>
+                    </span>
+
+            </div>
+                <input type="radio" checked="checked" name="type" value="1"  />标题&nbsp;&nbsp;
+                <input id="content1" type="radio" name="type" value="2"/>文章内容
+                    <input id="author" type="radio" name="type" value="3"/>作者
+            </form><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+<br>
+<br><br>
+    {% for article in contacts %}
+        <div class="panel panel-success" style="width: 600px;">
+        <div class="panel-heading">
+
+            <h3 class="panel-title" style="text-align: center">
+
+                <a href="/detail_article/?article_id={{ article.id }}" >{{ article.title }}</a>
+            </h3>
+            <div id="wrap" style="text-align: left">
+                <div1>作者:<a href="#">{{ article.author }}</a></div1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div2 >{{ article.pub_time | date:"Y-m-d H:m"}}</div2>
+                <button style="position: relative; right: -40%;" class="btn btn-primary"  type="button">
+            热度  <span class="badge" >{{ article.visitor }}</span>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+            {{ article.content | safe | slice:20}}...
+        </div>
+        </div>
+    {% endfor %}
+    <nav aria-label="Page navigation" style="text-align: center">
+        <ul class="pagination">
+            <li>
+                {% if contacts.has_previous %}
+                <a href="?page={{ contacts.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+            </li>
+            <li>
+
+            </li>
+               {% for i in page_nums %}
+                   <li {% if contacts.number == i %}class="active"{% endif %}><a href="?page={{ i }}">{{ i }}</a></li>
+               {% endfor %}
+            <li>
+                {% if contacts.has_next %}
+                <a href="?page={{ contacts.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                {% endif %}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<div class="qiniu-multi" data-input="#id_{{ widget.name }}">
+    {{ input }}
+    <div class="qiniu-preview-group">
+    {% for file in files %}
+        <div class="qiniu-preview-wrap">
+            <img class="qiniu-preview" title="点击更换图片" src="{{ file }}" alt="">
+            <div class="qiniu-remove" title="移除图片"><i class="fe fe-x"></i></div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="qiniu-preview-wrap template">
+        <img class="qiniu-preview" title="点击更换图片" alt="">
+        <div class="qiniu-remove" title="移除图片"><i class="fe fe-x"></i></div>
+    </div>
+    <div class="qiniu-add qiniu-add-always">
+        <i class="fe fe-plus"></i>
+    </div>
+</div>

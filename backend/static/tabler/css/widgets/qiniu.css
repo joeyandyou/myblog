@@ -1,0 +1,75 @@
+.qiniu {
+    display: inline-block;
+}
+.qiniu input {
+    display: none;
+}
+.qiniu-preview {
+    max-width: 300px;
+    max-height: 300px;
+    cursor: pointer;
+}
+.qiniu-add {
+    display: none;
+	border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    font-size: 28px;
+    color: #8c939d;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+}
+.qiniu-add:hover {
+	border-color: #409eff;
+}
+.qiniu-add-always {
+    display: block;
+}
+.qiniu-empty { display: none; }
+.qiniu-empty + .qiniu-add { display: block; }
+
+.qiniu-multi {
+    overflow: hidden;
+    padding-top: 10px;
+}
+.qiniu-multi input {
+    display: none;
+}
+.qiniu-preview-wrap {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    float: left;
+}
+.qiniu-preview-wrap .qiniu-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.qiniu-remove {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+.qiniu-remove:hover {
+    background-color: #ccc;
+}
+.template {
+    display: none;
+}

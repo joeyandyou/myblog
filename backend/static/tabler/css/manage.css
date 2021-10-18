@@ -1,0 +1,29 @@
+.view-img {
+	max-width: 80px;
+}
+
+tr td {
+	max-width: 20em;
+	overflow: visible;
+	text-overflow: ellipsis;
+}
+.form-control[type=checkbox]:focus {
+	box-shadow: none;
+}
+.input-icon-addon {
+	pointer-events: auto;
+	cursor: pointer;
+}
+.selectize-control {
+	min-width: 120px;
+}
+.ql-editor {
+    min-height: 200px;
+}
+.search-label {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.search-label span {
+    margin-right: 5px;
+}

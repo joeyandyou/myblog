@@ -1,0 +1,11 @@
+<div class="flag-input">
+    {{ input }}
+    <div {% if not inline %}class="custom-controls-stacked"{% endif %}>
+        {% for item, checked in flags %}
+        <label class="custom-control custom-checkbox {% if inline %}custom-control-inline{% endif %}">
+            <input type="checkbox" class="flag-item custom-control-input" value="{{ item.0 }}" {% if checked %}checked{% endif %} {% if widget.attrs.disabled %}disabled{% endif %}/>
+            <span class="custom-control-label">{{ item.1 }}</span>
+        </label>
+        {% endfor %}
+    </div>
+</div>

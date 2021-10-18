@@ -1,0 +1,124 @@
+{% set paginator = objs.search(request.GET.get('keyword', '')).paginator() %}
+{% set page = paginator.page(request.GET.get('page', 1)) %}
+
+{% extends base %}
+
+{% block main %}
+    <div class="container" style='margin-top: 2em'>
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible"
+                 role="alert">{{ message }}
+                <button data-dismiss="alert" class="close"></button>
+            </div>
+        {% endfor %}
+        {% if msg %}
+            <div class="alert alert-primary alert-dismissible" role="alert">{{ msg }}
+                <button data-dismiss="alert" class="close"></button>
+            </div>
+        {% endif %}
+        <div class="card">
+            <div class="card-header">
+                {% block page_name %}
+                    <h3 class="card-title">{{ objs.model._meta.verbose_name }}列表</h3>
+                {% endblock %}
+                <span class="flex-grow-1"></span>
+                <form action="" class="form-inline">
+                    {% block search_controls %}
+                        <div class="input-icon my-3 my-lg-0 search-label">
+                            <input type="search" class="form-control header-search" name='keyword'
+                                   value="{{ request.GET.get('keyword', '') }}" placeholder="搜索&hellip;" tabindex="1"/>
+                            <div class="input-icon-addon">
+                                <i class="fe fe-search"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">查询</button>
+                    {% endblock %}
+                </form>
+                {% block actions %}{% endblock %}
+                {% block action_add %}
+                    <a href="form" class="btn btn-success search-label">添加</a>
+                {% endblock %}
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover table-outline table-vcenter card-table">
+                    <thead>
+                    {% block thead %}
+                        <tr>
+                            {% for i in objs.model.config.default %}
+                                <th> {{ objs.model._meta.get_field(i).verbose_name }}</th>
+                            {% endfor %}
+                            <th>操作</th>
+                        </tr>
+                    {% endblock %}
+                    </thead>
+                    <tbody>
+                    {% block tbody %}
+
+                        {% for item in page.object_list %}
+                            <tr>
+                                {% for i in objs.model.config.default %}
+                                    {% if i in img_fields %}
+                                        <td><img class="show-img" src='{{ (item[i] or '').split(',')[0] }}'/></td>
+                                    {% elif i in choices_fields %}
+                                        <td>{{ item[i+'_choices'][item[i]][1] or '' }}</td>
+                                    {% elif i in money_fields %}
+                                        <td>{{ item[i] / 100 }}元</td>
+                                    {% else %}
+                                        <td>{{ item[i] }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td>
+                                    {% block opt scoped %}
+                                        <a href='form?id={{ item.id }}'>详情</a>
+                                        <a class='delete-confirm' href='delete?id={{ item.id }}'>删除</a>
+                                    {% endblock %}
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="20" align="center">暂无数据</td>
+                            </tr>
+                        {% endfor %}
+                    {% endblock %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">{% include 'tabler/pagination.html' %}</div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="action-confirm-dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">提示</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>确认进行此操作吗</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="action-confirm-btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="delete-confirm-dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">删除</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>确认删除吗</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="delete-confirm-btn">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

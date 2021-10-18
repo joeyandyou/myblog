@@ -1,0 +1,47 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.pagination {
+    justify-content: center;
+    color: #fff;
+}
+
+a.card:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul.form-control {
+    border: none;
+    list-style: none;
+}
+ul.form-control li {
+    display: inline-block;
+    margin-right: 8px;
+}
+ul.form-control label { cursor: pointer; }
+ul.form-control .form-control {
+    display: inline-block;
+    width: auto;
+}
+
+.checkbox-inline, .radio-inline {
+    cursor: pointer;
+}
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline {
+    margin-top: 0;
+    margin-left: 10px;
+}
+.checkbox-inline input[type=checkbox], .radio-inline input[type=radio] {
+    margin-right: 5px;
+}
+
+.show-img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}

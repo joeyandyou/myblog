@@ -1,0 +1,10 @@
+<div class="qiniu-wrap">
+    <div class="qiniu">
+        {{ input }}
+        <img class="qiniu-preview{% if not widget.value %} qiniu-empty{% endif %}"
+        {% if input.disabled %} title="点击更换图片"{% endif %} src="{{ widget.value|default:'' }}" alt="{{ widget.name }}">
+        <div class="qiniu-add">
+            <i class="fe fe-plus"></i>
+        </div>
+    </div>
+</div>

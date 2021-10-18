@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <meta http-equiv="Content-Language" content="zh-Hans"/>
+        <meta name="msapplication-TileColor" content="#2d89ef"/>
+        <meta name="theme-color" content="#4188c9"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="MobileOptimized" content="320"/>
+        <title>{% block title %}{% endblock %}</title>
+        <script type="text/javascript" src="/static/tabler/js/xlsx.full.min.js"></script>
+        <link rel="stylesheet" href="/static/tabler/css/font-awesome.min.css"/>
+        <link href="/static/tabler/css/dashboard.css" rel="stylesheet"/>
+        <link href="/static/tabler/css/base.css" rel="stylesheet"/>
+        <link href="/static/tabler/css/widgets/qiniu.css" rel="stylesheet"/>
+        <link href="/static/tabler/css/widgets/quill.core.css" rel="stylesheet"/>
+        <link href="/static/tabler/css/widgets/quill.snow.css" rel="stylesheet"/>
+        {% block css %}{% endblock %}
+        <script src="/static/tabler/js/require.min.js"></script>
+        <!-- Dashboard Core -->
+        <script src="/static/tabler/js/dashboard.js"></script>
+        <!-- Input Mask Plugin -->
+        <script src="/static/tabler/plugins/input-mask/plugin.js"></script>
+        <script src="/api/qiniu/script"></script>
+        <script src="/static/tabler/js/widgets/qiniu-require.js"></script>
+        <script src="/static/tabler/js/widgets/qiniu-images-require.js"></script>
+        <script src="/static/tabler/js/widgets/richeditor-require.js"></script>
+        <script src="/static/tabler/js/jquery-3.3.1.min.js"></script>
+        <script src="/static/tabler/js/main.js"></script>
+        <script src="/static/tabler/js/upload.js"></script>
+
+        {% block js %}{% endblock %}
+    </head>
+    <body class="">
+        <div class="modal fade modal-show-img" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+            </div>
+        </div>
+        <div class="page">{% block page %}{% endblock %}</div>
+
+        <script>require(['input-mask'])</script> 
+    </body>
+</html>

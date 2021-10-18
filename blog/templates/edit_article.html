@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <form method='post'>
+    {% csrf_token %}
+       <div class="jumbotron">
+           <div class="panel-heading">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">文章名:</span>
+                    <input type="text" name="title" value="{{ article.title }}" style="width: 300px;">
+                </div>
+               <span class="input-group-addon" id="basic-addon3" style="text-align: left;width: 370px;">作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者:&nbsp;&nbsp;&nbsp;{{ user.username }}</span><br>
+                <script type="text/javascript" href="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"></script>
+                <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+		        <!-- 引入wangEditor插件 -->
+		        <script type="text/javascript" src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+			        <div id="contentDiv" style="width: 1000px;"></div>
+			        <textarea name="content" id="content" style="display: none"></textarea>
+	        <script>
+		        var E = window.wangEditor;
+		        var editor = new E('#contentDiv')
+		        var $text1 = $('#content');
+		        editor.customConfig.onchange = function (html) {
+			    // 监控变化，同步更新富文本内容到 textarea
+			    $text1.val(html);
+		        }
+
+		        editor.create();
+		        $text1.val(editor.txt.html());
+	        </script>
+           </div>
+           <p style="font-size: 15px;">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="content" value="{{ article.content|safe }}" style=" height: 300px;width: 900px;" placeholder=请输入修改内容 ><br><br>
+            </p>
+
+           <span class="input-group-addon" id="basic-addon3" style="text-align: left;width: 370px;">发布时间:&nbsp;&nbsp;&nbsp;{{ article.pub_time| date:"Y-m-d H:m" }}</span><br>
+           <p style="font-size: 15px;">
+                是否展示文章:
+                <input type="radio" checked="checked" name="display" value="True"  />是&nbsp;&nbsp;<input id="no" type="radio" name="display" value="False"/>否<br><br>
+            </p>
+           <p style="font-size: 15px;">
+                是否允许评论:
+                <input type="radio" checked="checked" name="discuss" value="True"  />是&nbsp;&nbsp;<input id="no" type="radio" name="discuss" value="False"/>否<br><br>
+            </p>
+            <div style="text-align: center;">
+                <div class="btn-group">
+                    <button  class="btn btn-success" type="submit">确认修改</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/article_list/" class="btn btn-danger">返回上一层</a></li>
+                    </ul>
+                </div>
+            </div>
+           </div>
+    </form>
+{% endblock %}

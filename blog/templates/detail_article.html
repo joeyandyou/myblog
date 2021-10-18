@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+       <div class="jumbotron">
+           <div class="panel-heading">
+               <div class="panel-heading" style="text-align: center">
+                   <p>{{ essay.title }}</p>
+                   作者:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ essay.author }}</div>
+                <div class="panel-body" style="text-align: center">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="font-size: 15px">{{ essay.content | safe }}</p>
+                </div>
+                   <div class="panel-body" style="text-align: right">
+                        <p style="font-size: 15px">{{ essay.pub_time | date:"Y-m-d H:m"}}</p>
+                   </div>
+               <br>&nbsp;
+           </div>
+       {% if essay.discuss %}
+            <form method='post'>
+            {% csrf_token %}
+            <div style="text-align: left;">
+                <h4>发表我的评论:</h4>
+                <div class="comt-box">
+				<textarea placeholder="写点什么..." class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+				<div class="comt-ctrl" style="text-align: right;position: relative;right: 275px;">
+					<button class="btn btn-primary " type="submit" name="submit" id="submit" tabindex="5"><i class="icon-ok-circle icon-white icon12"></i> 提交评论</button>
+				</div>
+                </div>
+            </div>
+                <br>
+            </form>
+            {% for i in discuss_list %}
+            <div class="panel panel-default" style="width: 750px;">
+               <div class="panel-body" >
+                   <p style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ i.comment }}</p>
+               </div>
+                <div class="panel-footer" style="font-size: 10px;">{% if user == essay.author  %}作者评论{% else %} {{ i.comment.name }}评论{% endif %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ i.comment.created | date:"Y-m-d "}}</div><br>
+                {% if i.reply1 %}
+                    {% for reply in i.reply1 %}
+                        {{ reply.created| date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ reply.reply_user }}回复{{ reply.comment_user }}:<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ reply.content }}<br><br><br>
+                    {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" hidden value="{{ i.comment.id }}" name="comment_id">
+                    <textarea placeholder="回复..." class="input-block-level comt-area" name="reply" id="reply" cols="100%" rows="3" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                    <div style="text-align: right"><button  class="btn-primary" >回复</button></div>
+                </form>
+            </div>
+            {% endfor %}
+       {% endif %}
+       </div>
+    </div>
+
+{% endblock %}

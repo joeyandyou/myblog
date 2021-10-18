@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>点击按钮弹出输入框</title>
+
+<style>
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-put"><label>点击：</label>
+
+<form id="form1" name="form1" method="post" action="">
+
+
+
+<label>
+
+<script type="text/javascript">
+
+function show()
+
+{
+
+var value = document.getElementById("div1").style.display;
+
+if(value=="none")
+
+{
+
+document.getElementById("div1").style.display="block";
+
+}
+
+else
+
+document.getElementById("div1").style.display="none";
+
+}
+
+</script>
+
+
+<input type="button" value="我是按钮" onClick="show()"/>
+
+    <div id="div1" style="display:none">
+        <input class="text01" name="" type="text" />
+    </div>
+
+    </div>
+</body>
+
+</html>

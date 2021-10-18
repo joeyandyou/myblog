@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <button style="position: relative; right: -35%;  width: 100px;height: 40px;" class="btn btn-danger"  type="button" onclick="window.location.href='/reply_center/'">去回复中心？</button><br><br>
+    {% for i in list1 %}
+        <div class="list-group" style="width: 900px;">
+            <a href="/detail_article/?article_id={{ i.article.id }}" class="list-group-item active">
+            <h4 class="list-group-item-heading" style="text-align: center">{{ i.article }}</h4>
+            <p class="list-group-item-text">评论人:{{ i.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论时间：{{ i.created }}<br><br>
+                评论:<p style="font-size:17px;position: relative;left: 5%;">{{ i.content }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" hidden value="{{ i.id }}" name="comment_id">
+                    <div style="text-align: right">
+                        <button style="background-color: #2b669a" type="submit">忽略此评论</button>
+                    </div>
+                </form>
+                </p>
+            </a>
+
+        </div>
+        <br><br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        {% for i in list1 %}
+            {% for a in i.reply1 %}
+            {% if a %}
+                <div class="list-group" style="width: 900px;">
+                    <a href="/detail_article/?article_id={{ i.comment.article.id }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading" style="text-align: center">{{ i.comment.article }}</h4>
+                    <p class="list-group-item-text">评论人:{{ i.comment.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论时间：{{ i.comment.created }}<br><br>
+                        评论:<p style="font-size:17px;position: relative;left: 5%;">{{ i.comment.content }}</p>
+                    </p>
+
+                        {{ a.created }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ a.reply_user }}回复:<br><p style="font-size:17px;position: relative;left: 5%;">{{ a.content }}</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" hidden value="{{ a.id }}" name="reply_comment_id">
+                            <div style="text-align: right">
+                                <button style="background-color: #2b669a"  type="submit">忽略此回复</button>
+                            </div>
+                </form>
+
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <br><br>
+        {% endfor %}
+{% endblock %}

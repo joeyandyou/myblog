@@ -1,0 +1,54 @@
+{% extends 'tabler/base_frame.html' %}
+
+{% block title %}{% block sub_title %}{% endblock %}pywe后台{% endblock %}
+
+{% block page_title %}<a class="header-brand" href="/backend">pywe后台</a>{% endblock %}
+
+{% block profile_avatar %}
+    <span class="ml-2 d-none d-lg-block">
+        <span class="text-default">{{ request.user.username }}</span>
+    </span>
+{% endblock %}
+
+{% block profile_dropdown %}
+    <a class="dropdown-item" href="/backend/changepwd">
+        <i class="dropdown-icon fa fa-key"></i>
+        修改密码
+    </a>
+    <a class="dropdown-item" href="/backend/logout">
+        <i class="dropdown-icon fe fe-log-out"></i>
+        退出
+    </a>
+{% endblock %}
+
+{% block nav %}
+    <div class="col-lg order-lg-first">
+        <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+            <li class="nav-item">
+                <a href="/backend" class="nav-link">
+                    <i class="fe fe-home"></i>
+                    首页
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown">
+                    <i class="fe fe-book"></i>
+                    内容管理
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow">
+                    <a href="/backend/banner/list" class="dropdown-item">轮播图管理</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+    <div class="container">
+        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+            Copyright © 2018 - 2020 pywe . All rights reserved.
+        </div>
+    </div>
+</footer>
+{% endblock %}
